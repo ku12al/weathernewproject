@@ -2,6 +2,7 @@ const express = require ('express');
 const path = require('path');
 const hbs = require('hbs');
 const app = express();
+const functions = require("firebase-functions")
 const port = process.env.PORT || 8000;
 
 // public static path
@@ -41,3 +42,4 @@ app.get("*", (req, res)=>{
 app.listen(port, ()=>{
       console.log(`listening to the port at ${port}`);
 });
+exports.api = functions.https.onRequest(app)
