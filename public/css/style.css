@@ -30,8 +30,8 @@ body{
 }
 
 .main_menu2{
-      background: rgb(5,139,249);
-      background: linear-gradient(90deg, rgba(5,139,249,1) 0%, rgba(6,210,251,1) 100%);
+      background: rgb(5,189,249);
+background: linear-gradient(90deg, rgba(5,189,249,0.850945480731355) 19%, rgba(135,246,232,0.7613096263896184) 68%);
 }
 .navbar{
       color: #fff;
@@ -41,13 +41,16 @@ body{
 
 .navbar a{
       color: #fff;
-      font-size: 1.8rem;
+      font-size: 2rem;
 }
 .navbar a:hover{
       color: var(--main-color);
 }
 .navbar-toggler {
-      background-color: gold;
+      background-color: rgb(244, 242, 234);
+      width: 30px;
+      height: 20px;
+      border: none;
 }
 
 .fa-snowflake{
@@ -100,18 +103,31 @@ body{
       
 }
 
-.main_header_right{
+.main_header_right {
       height: 70rem;
+      width: 20rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center; /* Center the content */
 }
 
-.main_header_right figure img{
+.main_header_right figure {
+      margin: 10; /* Reset margin for the figure element */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 1rem; /* Optional: Add padding for better spacing */
+}
+
+.main_header_right figure img {
+      max-width: 100%; /* Ensure the image does not exceed the container's width */
+      height: 90%; /* Maintain aspect ratio */
       filter: drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.3));
+      border-radius: 0.5rem; /* Optional: Add rounded corners */
 }
-
 /* weather page */
 /* temp input fiels style code */
 .temp_form{
@@ -237,7 +253,6 @@ footer p{
       font-size: 2rem;
 
 }
-
 /* responsive code */
 
 @media (max-width : 768px) {

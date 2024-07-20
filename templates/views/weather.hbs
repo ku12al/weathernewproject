@@ -23,7 +23,7 @@
                         <div class="main_content">
                               <form class="temp_form">
                                     <input type="text" id="cityName" placeholder="Enter your city name">
-                                    <input type="submit" value="searce" id="submitBtn">
+                                    <input type="submit" value="Search" id="submitBtn">
                               </form>
 
                         </div>  
@@ -31,9 +31,10 @@
                               <div class="top_layer">
                                     <p id="day">Tuesday</p>
                                     <p id="today_data">31 DEC</p>
+                                    <p id="current_time">12:00 AM</p>
                               </div>
                               <div class="main_layer">
-                                    <p id="city_name"> get output here</p>
+                                    <p id="city_name">Write Your City Name Here</p>
                                     <div class="middle_layer data_hide">
                                           <p id="temp"><span id="temp_real_val">0</span><sup>o</sup>C</p>
                                           <p id="temp_status"><i class="fa fa-cloud" aria-hidden="true"></i></p>
@@ -47,30 +48,48 @@
 
       <!-- footer code -->
 
-      <footer>
+      {{!-- <footer>
             <p>created with 💞 by kunal sharma</p>
+      </footer> --}}
+      <footer>
+            <p>You can check weather now in my app</p>
       </footer>
-
       <script src="js/main.js"></script>
       <script>
-            const getCurrentDay = async() => {
-                  let weekday = new Array(7);
-                  weekday[0] = "Sunday";
-                  weekday[1] = "Monday";
-                  weekday[2] = "Tuesdayggh";
-                  weekday[3] = "Wednesday";
-                  weekday[4] = "Thursday";
-                  weekday[5] = "Friday";
-                  weekday[6] = "Saturday";
+        const getCurrentDay = () => {
+            const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const currentTime = new Date();
+            const days = weekday[currentTime.getDay()];
+            document.getElementById('day').innerText = days;
+        };
 
-                  let currentTime = new Date();
-                  days = weekday[currentTime.getDay()];
-                  let day = document.getElementById('day');
+        const getCurrentDate = () => {
+            const currentTime = new Date();
+            const date = currentTime.getDate();
+            const month = currentTime.toLocaleString('default', { month: 'short' });
+            const year = currentTime.getFullYear();
+            const fullDate = `${date} ${month} ${year}`;
+            document.getElementById('today_data').innerText = fullDate;
+        };
 
-                  day.innerText = days;
-                  
-            };
+        const getCurrentTime = () => {
+            const currentTime = new Date();
+            let hours = currentTime.getHours();
+            let minutes = currentTime.getMinutes();
+            let ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            const strTime = `${hours}:${minutes} ${ampm}`;
+            document.getElementById('current_time').innerText = strTime;
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
             getCurrentDay();
-      </script>
+            getCurrentDate();
+            getCurrentTime();
+            setInterval(getCurrentTime, 60000); // Update time every minute
+        });
+    </script>
 </body>
 </html>
